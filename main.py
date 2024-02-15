@@ -23,6 +23,7 @@ class GraphicsEngine:
         #create an object to help track time
         self.clock = pg.time.Clock()
         self.time = 0
+        self.delta_time = 0 
         #camera
         self.camera = Camera(self)
         #scene 
@@ -50,8 +51,9 @@ class GraphicsEngine:
         while True:
             self.get_time()
             self.check_events()
+            self.camera.update()
             self.render()
-            self.clock.tick(60)
+            self.delta_time = self.clock.tick(60)
 
 if __name__ == '__main__':
     app = GraphicsEngine()
